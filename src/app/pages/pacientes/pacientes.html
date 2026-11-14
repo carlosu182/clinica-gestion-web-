@@ -1,0 +1,350 @@
+
+<main class="content">
+
+  <!-- ENCABEZADO -->
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">GESTIÓN DE PACIENTES</p>
+      <h1>Pacientes</h1>
+      <p class="page-description">
+        Administra y consulta la información de los pacientes registrados.
+      </p>
+    </div>
+
+    <button
+         class="primary-button"
+        type="button"
+     (click)="abrirFormulario()">
+        <span>+</span> Nuevo paciente
+    </button>
+  </section>
+
+  <!-- ESTADÍSTICAS -->
+  <section class="patient-summary-grid">
+
+    <article class="patient-stat-card">
+      <div class="patient-stat-top">
+        <span>Total de pacientes</span>
+        <div class="patient-stat-icon blue">♙</div>
+      </div>
+      <h2>{{ totalPacientes }}</h2>
+      <p>Registros del sistema</p>
+    </article>
+
+    <article class="patient-stat-card">
+      <div class="patient-stat-top">
+        <span>Pacientes activos</span>
+        <div class="patient-stat-icon green">✓</div>
+      </div>
+      <h2>{{ pacientesActivos }}</h2>
+      <p>Pacientes habilitados</p>
+    </article>
+
+    <article class="patient-stat-card">
+      <div class="patient-stat-top">
+        <span>Nuevos este mes</span>
+        <div class="patient-stat-icon purple">+</div>
+      </div>
+      <h2>{{ nuevosEsteMes }}</h2>
+      <p>Nuevos registros</p>
+    </article>
+
+  </section>
+
+  <!-- TABLA DE PACIENTES -->
+  <section class="panel patients-panel">
+
+    <div class="panel-heading">
+      <div>
+        <h3>Directorio de pacientes</h3>
+        <p>Listado de pacientes registrados en la clínica.</p>
+      </div>
+    </div>
+
+    <!-- BUSCADOR -->
+    <div class="patients-toolbar">
+
+      <label class="patient-search">
+        <span>⌕</span>
+
+        <input
+          type="search"
+          placeholder="Buscar por nombre o DNI..."
+          [value]="terminoBusqueda"
+          (input)="terminoBusqueda = $any($event.target).value"
+        >
+      </label>
+
+      <span class="results-count">
+        {{ pacientesFiltrados.length }} pacientes encontrados
+      </span>
+
+    </div>
+
+    <!-- TABLA -->
+    <div class="patient-table-container">
+
+      <table class="patient-table">
+
+        <thead>
+          <tr>
+            <th>PACIENTE</th>
+            <th>DNI</th>
+            <th>TELÉFONO</th>
+            <th>CORREO ELECTRÓNICO</th>
+            <th>REGISTRO</th>
+            <th>ESTADO</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @for (paciente of pacientesFiltrados; track paciente.id) {
+
+            <tr>
+
+              <td>
+                <div class="patient-name-cell">
+
+                  <div class="patient-avatar">
+                    {{ paciente.nombres.charAt(0) }}{{ paciente.apellidos.charAt(0) }}
+                  </div>
+
+                  <div>
+                    <strong>
+                      {{ paciente.nombres }} {{ paciente.apellidos }}
+                    </strong>
+                    <small>Paciente registrado</small>
+                  </div>
+
+                </div>
+              </td>
+
+              <td>{{ paciente.dni }}</td>
+
+              <td>{{ paciente.telefono }}</td>
+
+              <td>{{ paciente.correo }}</td>
+
+              <td>{{ paciente.fechaRegistro }}</td>
+
+              <td>
+                <span
+                  class="patient-status"
+                  [class.inactive]="paciente.estado === 'Inactivo'"
+                >
+                  {{ paciente.estado }}
+                </span>
+              </td>
+
+            </tr>
+
+          } @empty {
+
+            <tr>
+              <td colspan="6" class="empty-results">
+                No se encontraron pacientes.
+              </td>
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+<!-- FORMULARIO DE REGISTRO -->
+@if (mostrarFormulario) {
+
+  <div class="modal-backdrop">
+
+    <section class="patient-modal">
+
+      <div class="modal-heading">
+        <div>
+          <h2>Registrar paciente</h2>
+          <p>Completa los datos personales del paciente.</p>
+        </div>
+
+        <button
+          type="button"
+          class="modal-close"
+          (click)="cerrarFormulario()">
+          ×
+        </button>
+      </div>
+
+      <form
+        #formulario="ngForm"
+        (ngSubmit)="registrarPaciente(formulario)"
+        novalidate>
+
+        <div class="form-grid">
+
+          <!-- NOMBRES -->
+          <div class="form-field">
+            <label>Nombres *</label>
+
+            <input
+              type="text"
+              name="nombres"
+              [(ngModel)]="nuevoPaciente.nombres"
+              required
+              minlength="2"
+              maxlength="50"
+              pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]+$"
+              placeholder="Ej. Juan Carlos"
+              #nombres="ngModel">
+
+            @if (nombres.invalid &&
+              (nombres.touched || formulario.submitted)) {
+              <small class="field-error">
+                Ingresa nombres válidos.
+              </small>
+            }
+          </div>
+
+          <!-- APELLIDOS -->
+          <div class="form-field">
+            <label>Apellidos *</label>
+
+            <input
+              type="text"
+              name="apellidos"
+              [(ngModel)]="nuevoPaciente.apellidos"
+              required
+              minlength="2"
+              maxlength="60"
+              pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]+$"
+              placeholder="Ej. Pérez García"
+              #apellidos="ngModel">
+
+            @if (apellidos.invalid &&
+              (apellidos.touched || formulario.submitted)) {
+              <small class="field-error">
+                Ingresa apellidos válidos.
+              </small>
+            }
+          </div>
+
+          <!-- DNI -->
+          <div class="form-field">
+            <label>DNI *</label>
+
+            <input
+              type="text"
+              name="dni"
+              [(ngModel)]="nuevoPaciente.dni"
+              (ngModelChange)="mensajeError = ''"
+              required
+              maxlength="8"
+              minlength="8"
+              pattern="^[0-9]{8}$"
+              placeholder="Ej. 74125896"
+              #dni="ngModel">
+
+            @if (dni.invalid &&
+              (dni.touched || formulario.submitted)) {
+              <small class="field-error">
+                El DNI debe tener exactamente 8 dígitos.
+              </small>
+            }
+          </div>
+
+          <!-- TELÉFONO -->
+          <div class="form-field">
+            <label>Teléfono *</label>
+
+            <input
+              type="tel"
+              name="telefono"
+              [(ngModel)]="nuevoPaciente.telefono"
+              required
+              maxlength="9"
+              minlength="9"
+              pattern="^[0-9]{9}$"
+              placeholder="Ej. 987654321"
+              #telefono="ngModel">
+
+            @if (telefono.invalid &&
+              (telefono.touched || formulario.submitted)) {
+              <small class="field-error">
+                El teléfono debe tener 9 dígitos.
+              </small>
+            }
+          </div>
+
+          <!-- CORREO -->
+          <div class="form-field full-width">
+            <label>Correo electrónico *</label>
+
+            <input
+              type="email"
+              name="correo"
+              [(ngModel)]="nuevoPaciente.correo"
+              required
+              email
+              placeholder="ejemplo@correo.com"
+              #correo="ngModel">
+
+            @if (correo.invalid &&
+              (correo.touched || formulario.submitted)) {
+              <small class="field-error">
+                Ingresa un correo electrónico válido.
+              </small>
+            }
+          </div>
+
+          <!-- ESTADO -->
+          <div class="form-field full-width">
+            <label>Estado del paciente</label>
+
+            <select
+              name="estado"
+              [(ngModel)]="nuevoPaciente.estado">
+
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        @if (mensajeError) {
+          <div class="form-error">
+            {{ mensajeError }}
+          </div>
+        }
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            (click)="cerrarFormulario(formulario)">
+            Cancelar
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button">
+            Registrar paciente
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </div>
+
+}
+
+
+</main>
