@@ -1,1 +1,325 @@
-<p>citas works!</p>
+
+<main class="content appointments-content">
+
+  <!-- ENCABEZADO -->
+  <section class="page-heading">
+
+    <div>
+      <p class="eyebrow">ADMINISTRACIÓN DE CITAS</p>
+
+      <h1>Citas médicas</h1>
+
+      <p class="page-description">
+        Organiza y consulta las citas médicas programadas en la clínica.
+      </p>
+    </div>
+
+    <button class="primary-button" type="button">
+      <span>+</span> Nueva cita
+    </button>
+
+  </section>
+
+
+  <!-- ESTADÍSTICAS -->
+  <section class="appointment-stats">
+
+    <article class="appointment-stat-card">
+
+      <div class="appointment-stat-top">
+        <span>Citas de hoy</span>
+        <div class="appointment-stat-icon blue">▣</div>
+      </div>
+
+      <h2>86</h2>
+      <p>Total de citas programadas</p>
+
+    </article>
+
+
+    <article class="appointment-stat-card">
+
+      <div class="appointment-stat-top">
+        <span>Confirmadas</span>
+        <div class="appointment-stat-icon green">✓</div>
+      </div>
+
+      <h2>64</h2>
+      <p>Citas confirmadas</p>
+
+    </article>
+
+
+    <article class="appointment-stat-card">
+
+      <div class="appointment-stat-top">
+        <span>Pendientes</span>
+        <div class="appointment-stat-icon orange">◷</div>
+      </div>
+
+      <h2>12</h2>
+      <p>Esperando confirmación</p>
+
+    </article>
+
+
+    <article class="appointment-stat-card">
+
+      <div class="appointment-stat-top">
+        <span>Canceladas</span>
+        <div class="appointment-stat-icon red">×</div>
+      </div>
+
+      <h2>10</h2>
+      <p>Citas canceladas</p>
+
+    </article>
+
+  </section>
+
+
+  <!-- PANEL PRINCIPAL -->
+  <section class="appointments-panel">
+
+    <div class="appointments-panel-header">
+
+      <div>
+        <h3>Agenda de citas</h3>
+        <p>Consulta las citas programadas de la clínica.</p>
+      </div>
+
+      <span class="appointments-date-label">
+        Sábado, 14 de noviembre de 2026
+      </span>
+
+    </div>
+
+
+    <!-- HERRAMIENTAS -->
+    <div class="appointments-toolbar">
+
+      <label class="appointment-search">
+        <span>⌕</span>
+
+        <input
+          type="search"
+          placeholder="Buscar paciente o médico...">
+      </label>
+
+
+      <input
+        class="appointment-date"
+        type="date"
+        value="2026-11-14">
+
+
+      <select class="appointment-filter">
+
+        <option>Todos los estados</option>
+        <option>Confirmadas</option>
+        <option>Pendientes</option>
+        <option>Canceladas</option>
+
+      </select>
+
+    </div>
+
+
+    <!-- FILTROS VISUALES -->
+    <div class="appointment-tabs">
+
+      <button type="button" class="appointment-tab active">
+        Todas las citas
+      </button>
+
+      <button type="button" class="appointment-tab">
+        Confirmadas
+      </button>
+
+      <button type="button" class="appointment-tab">
+        Pendientes
+      </button>
+
+      <button type="button" class="appointment-tab">
+        Canceladas
+      </button>
+
+    </div>
+
+
+    <!-- TABLA -->
+    <div class="appointment-table-container">
+
+      <table class="appointment-table">
+
+        <thead>
+          <tr>
+            <th>HORA</th>
+            <th>PACIENTE</th>
+            <th>MÉDICO</th>
+            <th>ESPECIALIDAD</th>
+            <th>ESTADO</th>
+            <th>ACCIÓN</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @for (cita of citas; track cita.id) {
+
+            <tr>
+
+              <td>
+                <strong class="appointment-time">
+                  {{ cita.hora }}
+                </strong>
+              </td>
+
+
+              <td>
+
+                <div class="appointment-patient">
+
+                  <div class="appointment-avatar">
+                    {{ cita.iniciales }}
+                  </div>
+
+                  <strong>{{ cita.paciente }}</strong>
+
+                </div>
+
+              </td>
+
+
+              <td>{{ cita.medico }}</td>
+
+
+              <td>
+                <span class="appointment-specialty">
+                  {{ cita.especialidad }}
+                </span>
+              </td>
+
+
+              <td>
+
+                <span
+                  class="appointment-status"
+                  [class.confirmed]="cita.estado === 'Confirmada'"
+                  [class.pending]="cita.estado === 'Pendiente'"
+                  [class.cancelled]="cita.estado === 'Cancelada'">
+
+                  {{ cita.estado }}
+
+                </span>
+
+              </td>
+
+
+              <td>
+                <span class="appointment-more">•••</span>
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div class="appointment-table-footer">
+      Mostrando 6 citas de demostración
+    </div>
+
+  </section>
+
+
+  <!-- AGENDA DEL DÍA -->
+  <section class="daily-agenda">
+
+    <div class="daily-agenda-header">
+
+      <div>
+        <h3>Resumen de la jornada</h3>
+        <p>Distribución de las citas durante el día.</p>
+      </div>
+
+      <span class="agenda-total">6 horarios</span>
+
+    </div>
+
+
+    <div class="agenda-timeline">
+
+      <article class="agenda-item">
+
+        <div class="agenda-hour">08:00 AM</div>
+
+        <div class="agenda-indicator blue-indicator"></div>
+
+        <div class="agenda-description">
+          <strong>María García López</strong>
+          <span>Dr. Carlos Torres · Medicina General</span>
+        </div>
+
+        <span class="agenda-tag confirmed">Confirmada</span>
+
+      </article>
+
+
+      <article class="agenda-item">
+
+        <div class="agenda-hour">09:00 AM</div>
+
+        <div class="agenda-indicator orange-indicator"></div>
+
+        <div class="agenda-description">
+          <strong>José Pérez Ramírez</strong>
+          <span>Dra. Ana López · Cardiología</span>
+        </div>
+
+        <span class="agenda-tag pending">Pendiente</span>
+
+      </article>
+
+
+      <article class="agenda-item">
+
+        <div class="agenda-hour">10:30 AM</div>
+
+        <div class="agenda-indicator blue-indicator"></div>
+
+        <div class="agenda-description">
+          <strong>Laura Mendoza Torres</strong>
+          <span>Dr. Pedro Ruiz · Pediatría</span>
+        </div>
+
+        <span class="agenda-tag confirmed">Confirmada</span>
+
+      </article>
+
+
+      <article class="agenda-item">
+
+        <div class="agenda-hour">11:00 AM</div>
+
+        <div class="agenda-indicator red-indicator"></div>
+
+        <div class="agenda-description">
+          <strong>Andrés Ramírez Díaz</strong>
+          <span>Dra. Sofía Díaz · Traumatología</span>
+        </div>
+
+        <span class="agenda-tag cancelled">Cancelada</span>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+</main>

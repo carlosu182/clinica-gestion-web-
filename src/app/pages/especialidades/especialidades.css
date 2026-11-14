@@ -1,0 +1,350 @@
+
+:host {
+  display: block;
+}
+
+/* ESTADÍSTICAS */
+
+.specialty-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.specialty-stat-card {
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.specialty-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.specialty-stat-top > span {
+  color: #8792a4;
+  font-size: 11px;
+}
+
+.specialty-stat-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  font-size: 17px;
+}
+
+.specialty-stat-icon.blue {
+  background: #e9f3ff;
+  color: #327dd1;
+}
+
+.specialty-stat-icon.green {
+  background: #e6f8f1;
+  color: #28a47b;
+}
+
+.specialty-stat-icon.purple {
+  background: #f1ebff;
+  color: #8a69d7;
+}
+
+.specialty-stat-card h2 {
+  color: #25334d;
+  font-size: 26px;
+  margin: 13px 0 5px;
+}
+
+.specialty-stat-card p {
+  color: #929daf;
+  font-size: 10px;
+  margin: 0;
+}
+
+
+/* DIRECTORIO */
+
+.specialty-directory {
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.specialty-directory-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.specialty-directory-header h3 {
+  color: #25334d;
+  font-size: 14px;
+  margin: 0 0 6px;
+}
+
+.specialty-directory-header p {
+  color: #929daf;
+  font-size: 10px;
+  margin: 0;
+}
+
+.specialty-counter {
+  color: #327dd1;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* BUSCADOR */
+
+.specialty-toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.specialty-search {
+  width: 350px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid #e6eaf1;
+  border-radius: 8px;
+  color: #8792a4;
+}
+
+.specialty-search input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 11px;
+  color: #35435a;
+}
+
+.specialty-filter {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #e6eaf1;
+  border-radius: 8px;
+  background: white;
+  color: #68768b;
+  font-size: 10px;
+  outline: none;
+}
+
+
+/* TARJETAS */
+
+.specialty-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.specialty-card {
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 11px;
+  padding: 19px;
+  transition: 0.2s;
+}
+
+.specialty-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px #25334d10;
+}
+
+.specialty-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.specialty-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.specialty-status {
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #e6f7ef;
+  color: #259b70;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+
+/* INFORMACIÓN */
+
+.specialty-card-content {
+  min-height: 87px;
+}
+
+.specialty-card-content h3 {
+  color: #35435a;
+  font-size: 13px;
+  margin: 0 0 9px;
+}
+
+.specialty-card-content p {
+  color: #8792a4;
+  font-size: 10px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* MÉDICOS ASIGNADOS */
+
+.specialty-doctors {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0;
+  border-top: 1px solid #edf0f5;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.specialty-doctor-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #e9f3ff;
+  color: #327dd1;
+  font-size: 15px;
+}
+
+.specialty-doctors strong {
+  display: block;
+  color: #35435a;
+  font-size: 10px;
+}
+
+.specialty-doctors small {
+  display: block;
+  color: #a0aaba;
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+
+/* BOTONES */
+
+.specialty-card-footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.specialty-card-footer button {
+  flex: 1;
+  padding: 9px 5px;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.specialty-view-button {
+  background: #e9f3ff;
+  border: none;
+  color: #327dd1;
+}
+
+.specialty-edit-button {
+  background: white;
+  border: 1px solid #e1e7ef;
+  color: #68768b;
+}
+
+
+/* INFORMACIÓN INFERIOR */
+
+.specialty-note {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: #eaf3ff;
+  border-radius: 9px;
+}
+
+.specialty-note > span {
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #327dd1;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.specialty-note p {
+  color: #54718f;
+  font-size: 10px;
+  margin: 0;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .specialty-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 750px) {
+  .specialty-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .specialty-toolbar {
+    flex-direction: column;
+  }
+
+  .specialty-search,
+  .specialty-filter {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .specialty-stats,
+  .specialty-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .specialty-directory {
+    padding: 14px;
+  }
+
+  .specialty-directory-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

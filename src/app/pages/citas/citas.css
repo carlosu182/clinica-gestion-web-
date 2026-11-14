@@ -1,0 +1,436 @@
+
+:host {
+  display: block;
+}
+
+/* ESTADÍSTICAS */
+
+.appointment-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.appointment-stat-card {
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+  padding: 19px;
+}
+
+.appointment-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appointment-stat-top > span {
+  color: #8792a4;
+  font-size: 11px;
+}
+
+.appointment-stat-icon {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  font-size: 17px;
+}
+
+.appointment-stat-icon.blue {
+  background: #e9f3ff;
+  color: #327dd1;
+}
+
+.appointment-stat-icon.green {
+  background: #e6f8f1;
+  color: #28a47b;
+}
+
+.appointment-stat-icon.orange {
+  background: #fff2e2;
+  color: #e59a42;
+}
+
+.appointment-stat-icon.red {
+  background: #fdebed;
+  color: #cf626b;
+}
+
+.appointment-stat-card h2 {
+  color: #25334d;
+  font-size: 26px;
+  margin: 13px 0 5px;
+}
+
+.appointment-stat-card p {
+  color: #929daf;
+  font-size: 10px;
+  margin: 0;
+}
+
+
+/* PANEL DE CITAS */
+
+.appointments-panel {
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.appointments-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.appointments-panel-header h3,
+.daily-agenda-header h3 {
+  color: #25334d;
+  font-size: 14px;
+  margin: 0 0 6px;
+}
+
+.appointments-panel-header p,
+.daily-agenda-header p {
+  color: #929daf;
+  font-size: 10px;
+  margin: 0;
+}
+
+.appointments-date-label {
+  color: #327dd1;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* BUSCADOR Y FILTROS */
+
+.appointments-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.appointment-search {
+  width: 300px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid #e6eaf1;
+  border-radius: 8px;
+  color: #8792a4;
+}
+
+.appointment-search input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #35435a;
+  font-size: 11px;
+}
+
+.appointment-date,
+.appointment-filter {
+  height: 40px;
+  padding: 0 11px;
+  border: 1px solid #e6eaf1;
+  border-radius: 8px;
+  background: white;
+  color: #68768b;
+  font-size: 10px;
+  outline: none;
+}
+
+
+/* PESTAÑAS */
+
+.appointment-tabs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  border-bottom: 1px solid #edf0f5;
+  margin-bottom: 8px;
+}
+
+.appointment-tab {
+  padding: 12px 2px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #8995a8;
+  font-size: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.appointment-tab.active {
+  color: #327dd1;
+  border-bottom-color: #327dd1;
+  font-weight: 700;
+}
+
+
+/* TABLA */
+
+.appointment-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.appointment-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.appointment-table th {
+  padding: 15px 11px;
+  border-bottom: 1px solid #edf0f5;
+  color: #98a2b2;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.appointment-table td {
+  padding: 15px 11px;
+  border-bottom: 1px solid #f0f2f6;
+  color: #68768b;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.appointment-table tbody tr:hover {
+  background: #fafcff;
+}
+
+.appointment-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.appointment-time {
+  color: #35435a;
+  font-size: 10px;
+}
+
+.appointment-patient {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.appointment-avatar {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8f1ff;
+  color: #327dd1;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.appointment-patient strong {
+  color: #35435a;
+  font-size: 10px;
+}
+
+.appointment-specialty {
+  color: #68768b;
+  font-size: 9px;
+}
+
+
+/* ESTADOS */
+
+.appointment-status,
+.agenda-tag {
+  display: inline-block;
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.appointment-status.confirmed,
+.agenda-tag.confirmed {
+  background: #e6f7ef;
+  color: #259b70;
+}
+
+.appointment-status.pending,
+.agenda-tag.pending {
+  background: #fff3df;
+  color: #c58a32;
+}
+
+.appointment-status.cancelled,
+.agenda-tag.cancelled {
+  background: #fdebed;
+  color: #cf626b;
+}
+
+.appointment-more {
+  color: #8792a4;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.appointment-table-footer {
+  padding-top: 15px;
+  border-top: 1px solid #edf0f5;
+  color: #929daf;
+  font-size: 10px;
+}
+
+
+/* RESUMEN DE LA JORNADA */
+
+.daily-agenda {
+  margin-top: 22px;
+  padding: 22px;
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+}
+
+.daily-agenda-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.agenda-total {
+  color: #327dd1;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.agenda-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.agenda-item {
+  display: grid;
+  grid-template-columns: 85px 12px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 13px;
+  padding: 15px 8px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.agenda-item:last-child {
+  border-bottom: none;
+}
+
+.agenda-hour {
+  color: #35435a;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.agenda-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.blue-indicator {
+  background: #3283df;
+}
+
+.orange-indicator {
+  background: #e59a42;
+}
+
+.red-indicator {
+  background: #cf626b;
+}
+
+.agenda-description {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.agenda-description strong {
+  color: #35435a;
+  font-size: 10px;
+}
+
+.agenda-description span {
+  color: #929daf;
+  font-size: 9px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+  .appointment-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 750px) {
+  .appointments-panel {
+    padding: 15px;
+  }
+
+  .appointments-panel-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .appointment-search {
+    width: 100%;
+  }
+
+  .appointment-date,
+  .appointment-filter {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .agenda-item {
+    grid-template-columns: 70px 10px minmax(0, 1fr);
+  }
+
+  .agenda-tag {
+    grid-column: 3;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 500px) {
+  .appointment-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .daily-agenda {
+    padding: 14px;
+  }
+
+  .agenda-item {
+    gap: 8px;
+  }
+}

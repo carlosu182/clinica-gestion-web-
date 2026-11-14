@@ -94,6 +94,7 @@
             <th>CORREO ELECTRÓNICO</th>
             <th>REGISTRO</th>
             <th>ESTADO</th>
+            <th>ACCIONES</th>
           </tr>
         </thead>
 
@@ -129,20 +130,31 @@
               <td>{{ paciente.fechaRegistro }}</td>
 
               <td>
-                <span
-                  class="patient-status"
-                  [class.inactive]="paciente.estado === 'Inactivo'"
-                >
-                  {{ paciente.estado }}
-                </span>
-              </td>
+          <div class="patient-actions">
+
+            <button
+              type="button"
+              class="edit-button"
+              (click)="editarPaciente(paciente)">
+              Editar
+            </button>
+
+            <button
+              type="button"
+              class="delete-button"
+              (click)="eliminarPaciente(paciente.id)">
+              Eliminar
+            </button>
+
+          </div>
+        </td>
 
             </tr>
 
           } @empty {
 
             <tr>
-              <td colspan="6" class="empty-results">
+              <td colspan="7" class="empty-results">
                 No se encontraron pacientes.
               </td>
             </tr>
@@ -166,8 +178,9 @@
 
       <div class="modal-heading">
         <div>
-          <h2>Registrar paciente</h2>
-          <p>Completa los datos personales del paciente.</p>
+      <h2>
+        {{ pacienteEditandoId !== null ? 'Editar paciente' : 'Registrar paciente' }}
+      </h2>          <p>Completa los datos personales del paciente.</p>
         </div>
 
         <button
@@ -180,7 +193,7 @@
 
       <form
         #formulario="ngForm"
-        (ngSubmit)="registrarPaciente(formulario)"
+        (ngSubmit)="guardarPaciente(formulario)"
         novalidate>
 
         <div class="form-grid">
@@ -333,7 +346,7 @@
           <button
             type="submit"
             class="primary-button">
-            Registrar paciente
+            {{ pacienteEditandoId !== null ? 'Guardar cambios' : 'Registrar paciente' }}
           </button>
 
         </div>

@@ -131,7 +131,7 @@
 
 .patient-table {
   width: 100%;
-  min-width: 750px;
+  min-width: 900px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -405,3 +405,41 @@
     width: 100%;
   }
 }
+
+/* ACCIONES DE PACIENTES */
+
+.patient-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.edit-button,
+.delete-button {
+  border: none;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-button {
+  background: #e9f3ff;
+  color: #287bd8;
+}
+
+.edit-button:hover {
+  background: #d5e8ff;
+}
+
+.delete-button {
+  background: #fdebed;
+  color: #cf626b;
+}
+
+.delete-button:hover {
+  background: #fbd9dd;
+}
+

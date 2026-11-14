@@ -24,6 +24,7 @@ export class Pacientes {
   terminoBusqueda = '';
   mostrarFormulario = false;
   mensajeError = '';
+  pacienteEditandoId: number | null = null;
 
   nuevoPaciente = {
     nombres: '',
@@ -121,25 +122,116 @@ export class Pacientes {
   }
 
   abrirFormulario(): void {
+    this.pacienteEditandoId = null;
     this.mensajeError = '';
     this.mostrarFormulario = true;
   }
+  
 
-  cerrarFormulario(form?: NgForm): void {
-    this.mostrarFormulario = false;
+ cerrarFormulario(form?: NgForm): void {
+  this.mostrarFormulario = false;
+  this.mensajeError = '';
+  this.pacienteEditandoId = null;
+
+  this.nuevoPaciente = {
+    nombres: '',
+    apellidos: '',
+    dni: '',
+    telefono: '',
+    correo: '',
+    estado: 'Activo'
+  };
+
+  form?.resetForm(this.nuevoPaciente);
+}
+  
+
+  // Abrir formulario para editar un paciente
+  editarPaciente(paciente: Paciente): void {
+
+    this.pacienteEditandoId = paciente.id;
     this.mensajeError = '';
 
     this.nuevoPaciente = {
-      nombres: '',
-      apellidos: '',
-      dni: '',
-      telefono: '',
-      correo: '',
-      estado: 'Activo'
+      nombres: paciente.nombres,
+      apellidos: paciente.apellidos,
+      dni: paciente.dni,
+      telefono: paciente.telefono,
+      correo: paciente.correo,
+      estado: paciente.estado
     };
 
-    form?.resetForm(this.nuevoPaciente);
+    this.mostrarFormulario = true;
   }
+
+  // Guardar un paciente nuevo o actualizar uno existente
+  guardarPaciente(form: NgForm): void {
+
+    this.mensajeError = '';
+
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
+    const dni = this.nuevoPaciente.dni.trim();
+
+    const dniExiste = this.pacientes.some(
+      paciente =>
+        paciente.dni === dni &&
+        paciente.id !== this.pacienteEditandoId
+    );
+
+    if (dniExiste) {
+      this.mensajeError =
+        'Ya existe otro paciente registrado con este DNI.';
+      return;
+    }
+
+    // Si estamos editando
+    if (this.pacienteEditandoId !== null) {
+
+      this.pacientes = this.pacientes.map(paciente => {
+
+        if (paciente.id === this.pacienteEditandoId) {
+          return {
+            ...paciente,
+            nombres: this.nuevoPaciente.nombres.trim(),
+            apellidos: this.nuevoPaciente.apellidos.trim(),
+            dni,
+            telefono: this.nuevoPaciente.telefono.trim(),
+            correo: this.nuevoPaciente.correo.trim(),
+            estado: this.nuevoPaciente.estado
+          };
+        }
+
+        return paciente;
+      });
+
+      this.cerrarFormulario(form);
+      return;
+    }
+
+    // Si es un registro nuevo
+    this.registrarPaciente(form);
+  }
+
+  // Eliminar un paciente
+  eliminarPaciente(id: number): void {
+
+    const confirmar = window.confirm(
+      '¿Estás seguro de que deseas eliminar este paciente?'
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
+    this.pacientes = this.pacientes.filter(
+      paciente => paciente.id !== id
+    );
+  }
+
 
   registrarPaciente(form: NgForm): void {
 

@@ -1,1 +1,196 @@
-<p>especialidades works!</p>
+
+<main class="content specialties-content">
+
+  <!-- ENCABEZADO -->
+  <section class="page-heading">
+
+    <div>
+      <p class="eyebrow">CATÁLOGO MÉDICO</p>
+
+      <h1>Especialidades</h1>
+
+      <p class="page-description">
+        Administra las especialidades médicas disponibles en la clínica.
+      </p>
+    </div>
+
+    <button class="primary-button" type="button">
+      <span>+</span> Nueva especialidad
+    </button>
+
+  </section>
+
+
+  <!-- ESTADÍSTICAS -->
+  <section class="specialty-stats">
+
+    <article class="specialty-stat-card">
+
+      <div class="specialty-stat-top">
+        <span>Total de especialidades</span>
+        <div class="specialty-stat-icon blue">✚</div>
+      </div>
+
+      <h2>5</h2>
+      <p>Especialidades registradas</p>
+
+    </article>
+
+
+    <article class="specialty-stat-card">
+
+      <div class="specialty-stat-top">
+        <span>Médicos asignados</span>
+        <div class="specialty-stat-icon green">♙</div>
+      </div>
+
+      <h2>6</h2>
+      <p>Personal médico asociado</p>
+
+    </article>
+
+
+    <article class="specialty-stat-card">
+
+      <div class="specialty-stat-top">
+        <span>Especialidades activas</span>
+        <div class="specialty-stat-icon purple">✓</div>
+      </div>
+
+      <h2>5</h2>
+      <p>Disponibles en la clínica</p>
+
+    </article>
+
+  </section>
+
+
+  <!-- CATÁLOGO -->
+  <section class="specialty-directory">
+
+    <div class="specialty-directory-header">
+
+      <div>
+        <h3>Catálogo de especialidades</h3>
+
+        <p>
+          Consulta las áreas médicas y sus profesionales asociados.
+        </p>
+      </div>
+
+      <span class="specialty-counter">
+        5 especialidades
+      </span>
+
+    </div>
+
+
+    <!-- BUSCADOR -->
+    <div class="specialty-toolbar">
+
+      <label class="specialty-search">
+
+        <span>⌕</span>
+
+        <input
+          type="search"
+          placeholder="Buscar especialidad...">
+
+      </label>
+
+      <select class="specialty-filter">
+
+        <option>Todas las especialidades</option>
+        <option>Activas</option>
+        <option>Inactivas</option>
+
+      </select>
+
+    </div>
+
+
+    <!-- TARJETAS -->
+    <div class="specialty-grid">
+
+      @for (especialidad of especialidades; track especialidad.id) {
+
+        <article class="specialty-card">
+
+          <div class="specialty-card-top">
+
+            <div
+              class="specialty-icon"
+              [style.background-color]="especialidad.colorFondo"
+              [style.color]="especialidad.colorTexto">
+
+              {{ especialidad.codigo }}
+
+            </div>
+
+            <span class="specialty-status">
+              {{ especialidad.estado }}
+            </span>
+
+          </div>
+
+
+          <div class="specialty-card-content">
+
+            <h3>{{ especialidad.nombre }}</h3>
+
+            <p>{{ especialidad.descripcion }}</p>
+
+          </div>
+
+
+          <div class="specialty-doctors">
+
+            <div class="specialty-doctor-icon">
+              ♙
+            </div>
+
+            <div>
+              <strong>{{ especialidad.medicos }}
+                {{ especialidad.medicos === 1 ? 'Médico' : 'Médicos' }}
+              </strong>
+
+              <small>Asignados a esta área</small>
+            </div>
+
+          </div>
+
+
+          <div class="specialty-card-footer">
+
+            <button type="button" class="specialty-view-button">
+              Ver médicos
+            </button>
+
+            <button type="button" class="specialty-edit-button">
+              Editar
+            </button>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- INFORMACIÓN INFERIOR -->
+  <div class="specialty-note">
+
+    <span>i</span>
+
+    <p>
+      Las especialidades permiten clasificar a los médicos
+      y organizar la programación de citas de la clínica.
+    </p>
+
+  </div>
+
+</main>

@@ -1,1 +1,205 @@
-<p>medicos works!</p>
+
+<main class="content doctors-content">
+
+  <!-- ENCABEZADO -->
+  <section class="page-heading">
+
+    <div>
+      <p class="eyebrow">GESTIÓN DEL PERSONAL MÉDICO</p>
+
+      <h1>Médicos</h1>
+
+      <p class="page-description">
+        Administra la información del personal médico de la clínica.
+      </p>
+    </div>
+
+    <button class="primary-button" type="button">
+      <span>+</span> Nuevo médico
+    </button>
+
+  </section>
+
+
+  <!-- ESTADÍSTICAS -->
+  <section class="doctor-stats">
+
+    <article class="doctor-stat-card">
+
+      <div class="doctor-stat-top">
+        <span>Total de médicos</span>
+        <div class="doctor-stat-icon blue">♙</div>
+      </div>
+
+      <h2>6</h2>
+      <p>Médicos registrados</p>
+
+    </article>
+
+
+    <article class="doctor-stat-card">
+
+      <div class="doctor-stat-top">
+        <span>Disponibles</span>
+        <div class="doctor-stat-icon green">✓</div>
+      </div>
+
+      <h2>3</h2>
+      <p>Disponibles para atención</p>
+
+    </article>
+
+
+    <article class="doctor-stat-card">
+
+      <div class="doctor-stat-top">
+        <span>Especialidades</span>
+        <div class="doctor-stat-icon purple">✚</div>
+      </div>
+
+      <h2>5</h2>
+      <p>Áreas médicas registradas</p>
+
+    </article>
+
+  </section>
+
+
+  <!-- DIRECTORIO MÉDICO -->
+  <section class="doctor-directory">
+
+    <div class="directory-header">
+
+      <div>
+        <h3>Directorio médico</h3>
+        <p>Personal médico registrado en MediCitas.</p>
+      </div>
+
+      <span class="doctor-total">
+        6 médicos registrados
+      </span>
+
+    </div>
+
+
+    <!-- BUSCADOR Y FILTROS -->
+    <div class="doctor-toolbar">
+
+      <label class="doctor-search">
+        <span>⌕</span>
+
+        <input
+          type="search"
+          placeholder="Buscar médico por nombre o CMP...">
+      </label>
+
+      <select class="doctor-filter">
+        <option>Todas las especialidades</option>
+        <option>Medicina General</option>
+        <option>Cardiología</option>
+        <option>Pediatría</option>
+        <option>Traumatología</option>
+        <option>Ginecología</option>
+      </select>
+
+    </div>
+
+
+    <!-- TARJETAS DE MÉDICOS -->
+    <div class="doctor-grid">
+
+      @for (medico of medicos; track medico.id) {
+
+        <article class="doctor-card">
+
+          <div class="doctor-card-header">
+
+            <div class="doctor-profile">
+
+              <div
+                class="doctor-avatar"
+                [style.background-color]="medico.avatarBg"
+                [style.color]="medico.avatarColor">
+
+                {{ medico.iniciales }}
+
+              </div>
+
+              <div class="doctor-name">
+
+                <h3>{{ medico.nombre }}</h3>
+
+                <p>{{ medico.especialidad }}</p>
+
+              </div>
+
+            </div>
+
+            <span
+              class="doctor-status"
+              [class.available]="medico.estado === 'Disponible'"
+              [class.consultation]="medico.estado === 'En consulta'"
+              [class.unavailable]="medico.estado === 'No disponible'">
+
+              {{ medico.estado }}
+
+            </span>
+
+          </div>
+
+
+          <div class="doctor-information">
+
+            <div class="doctor-info-item">
+
+              <span>REGISTRO CMP</span>
+              <strong>{{ medico.cmp }}</strong>
+
+            </div>
+
+            <div class="doctor-info-item">
+
+              <span>TELÉFONO</span>
+              <strong>{{ medico.telefono }}</strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="doctor-contact">
+
+            <p>
+              <span>✉</span>
+              {{ medico.correo }}
+            </p>
+
+            <p>
+              <span>◷</span>
+              {{ medico.horario }}
+            </p>
+
+          </div>
+
+
+          <div class="doctor-card-footer">
+
+            <button type="button" class="doctor-view-button">
+              Ver perfil
+            </button>
+
+            <button type="button" class="doctor-edit-button">
+              Editar
+            </button>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+</main>
