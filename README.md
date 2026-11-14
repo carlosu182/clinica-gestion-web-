@@ -1,59 +1,76 @@
-# ClinicaGestionWeb
+# MediCitas – Sistema de Gestión de Citas Médicas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.7.
+**Aplicación web para la administración de una clínica médica.**
 
-## Development server
+## Descripción del proyecto
 
-To start a local development server, run:
+MediCitas es un sistema web desarrollado para facilitar la gestión y organización de las actividades administrativas de una clínica médica. Permite visualizar y administrar información relacionada con pacientes, médicos, especialidades y citas médicas.
 
-```bash
-ng serve
-```
+El proyecto busca ofrecer una interfaz intuitiva, organizada y accesible para optimizar la administración de los servicios de atención médica.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Módulos del sistema
 
-## Code scaffolding
+El frontend cuenta con los siguientes módulos:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Dashboard:** panel principal con estadísticas y resumen general de la clínica.
+- **Pacientes:** directorio y registro de información de pacientes.
+- **Médicos:** administración del personal médico y sus especialidades.
+- **Especialidades:** catálogo de las áreas médicas disponibles.
+- **Citas médicas:** visualización y organización de las citas programadas.
 
-```bash
-ng generate component component-name
-```
+## Tecnologías utilizadas
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Angular 22
+- TypeScript
+- HTML5
+- CSS3
+- Node.js
+- npm
+- Visual Studio Code
 
-```bash
-ng generate --help
-```
+## Diseño de la aplicación
 
-## Building
+La interfaz utiliza una identidad visual basada en tonos azules y blancos, con un menú de navegación lateral, tarjetas estadísticas, tablas de información y paneles administrativos.
 
-To build the project run:
+## Instalación y ejecución
 
-```bash
-ng build
-```
+1. Clonar el repositorio:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+   ```bash
+   git clone https://github.com/carlosu182/clinica-gestion-web-.git
+   ```
 
-## Running unit tests
+2. Ingresar a la carpeta:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+   ```bash
+   cd clinica-gestion-web
+   ```
 
-```bash
-ng test
-```
+3. Instalar las dependencias:
 
-## Running end-to-end tests
+   ```bash
+   npm install
+   ```
 
-For end-to-end (e2e) testing, run:
+4. Ejecutar el servidor de desarrollo:
 
-```bash
-ng e2e
-```
+   ```bash
+   ng serve
+   ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+5. Abrir en el navegador:
 
-## Additional Resources
+   ```text
+   http://localhost:4200/
+   ```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Estado del proyecto
+
+Actualmente se encuentra desarrollada la estructura visual del frontend y sus cinco módulos principales. Las funcionalidades CRUD, la integración con el backend y la conexión con la base de datos MySQL se desarrollarán en las siguientes etapas.
+
+## Proyecto académico
+
+**Curso:** Desarrollo Web Integrado  
+**Proyecto:** Sistema de Gestión de Citas Médicas – MediCitas  
+**Repositorio:** GitHub
+
